@@ -10,7 +10,7 @@ export default function Form(props) {
     
     }
     return (
-        <div className='form-overlay'>
+        <div className='form-overlay border'>
             <form>
                 <div className='form-group'>
                     <label>Name:</label>
@@ -23,6 +23,19 @@ export default function Form(props) {
                     />
                     {
                         submitted && products.name==="" && <span className='text-danger'>*Product name required</span>
+                    }
+                </div>
+                <div className='form-group'>
+                    <label>Author:</label>
+                    <input className='form-control mt-2' 
+                    type="text" 
+                    name='author' 
+                    placeholder='Author Name'
+                    value={products.author}
+                    onChange={changeFormData}
+                    />
+                    {
+                        submitted && products.author==="" && <span className='text-danger'>*Author name required</span>
                     }
                 </div>
                 <div className='form-group'>
@@ -47,9 +60,10 @@ export default function Form(props) {
                     onChange={changeFormData}
                     >
                         <option value="-1"></option>
-                        <option value={'Fairy Tails'}>Mobiles</option>
-                        <option value={'History'}>Laptops</option>
-                        <option value={'Fantasy'}>Tv</option>
+                        <option value={'Biography'}>Biography</option>
+                        <option value={'History'}>History</option>
+                        <option value={'Fantasy'}>Fantasy</option>
+                        <option value={'Horror'}>Horror</option>
                     </select>
                     {
                         submitted && products.category==="" && <span className='text-danger'>*Category name required</span>

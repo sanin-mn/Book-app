@@ -12,6 +12,7 @@ function App() {
 
   const [initialForm, setInitialForm] = useState({
     name: '',
+    author:'',
     price: '',
     category: ''
   })
@@ -37,7 +38,8 @@ function App() {
     let data={
       name:product.name,
       price:product.price,
-      category:product.category
+      category:product.category,
+      author:product.author
     }
 
     if (edit)
@@ -59,6 +61,7 @@ function App() {
     setOpenform(true)
     setInitialForm({
       name: '',
+      author:'',
       price: '',
       category: ''
     })
@@ -69,9 +72,9 @@ function App() {
   }
 
   return (
-    <div className='wrapper m-5 w-75 '>
-      <h1 className='text-primary ms-3 fs-3'>Book Details</h1>
-      <button className='btn btn-success ms-3' onClick={() => { showForm() }}>add Product</button>
+    <div className='wrapper m-5 w-75'>
+      <h1 className='heading text-dark ms-3 fs-4 fw-bold bg-light rounded '>BOOKS DETAILS</h1>
+      <button className='btn btn-success ms-3' onClick={() => { showForm() }}>Add Book</button>
       <Table products={products} delete={deleteProduct} edit={editProduct}></Table>
       {
         openform && <Form close={closeForm} data={initialForm} add={addProduct} />
