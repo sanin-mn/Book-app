@@ -69,9 +69,9 @@ function App() {
   }
 
   return (
-    <div className='wrapper m-5 w-75'>
-      <h1>crud</h1>
-      <button className='btn btn-primary ms-3' onClick={() => { showForm() }}>add Product</button>
+    <div className='wrapper m-5 w-75 '>
+      <h1 className='text-primary ms-3 fs-3'>Book Details</h1>
+      <button className='btn btn-success ms-3' onClick={() => { showForm() }}>add Product</button>
       <Table products={products} delete={deleteProduct} edit={editProduct}></Table>
       {
         openform && <Form close={closeForm} data={initialForm} add={addProduct} />

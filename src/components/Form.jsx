@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 export default function Form(props) {
     const [products,setProducts] = useState(props.data)
-    
+    const [submitted,setSubmitted] = useState(false)
 
     let changeFormData = (event) =>{
         const {name,value} = event.target
@@ -21,6 +21,9 @@ export default function Form(props) {
                     value={products.name}
                     onChange={changeFormData}
                     />
+                    {
+                        submitted && products.name==="" && <span className='text-danger'>*Product name required</span>
+                    }
                 </div>
                 <div className='form-group'>
                     <label>Price:</label>
@@ -31,6 +34,9 @@ export default function Form(props) {
                     value={products.price}
                     onChange={changeFormData}
                     />
+                    {
+                        submitted && products.price==="" && <span className='text-danger'>*Product price required</span>
+                    }
                 </div>
                 <div className="form-group">
                 <label>Category:</label>
@@ -41,13 +47,25 @@ export default function Form(props) {
                     onChange={changeFormData}
                     >
                         <option value="-1"></option>
-                        <option value={'mobiles'}>Mobiles</option>
-                        <option value={'laptops'}>Laptops</option>
-                        <option value={'tv'}>Tv</option>
+                        <option value={'Fairy Tails'}>Mobiles</option>
+                        <option value={'History'}>Laptops</option>
+                        <option value={'Fantasy'}>Tv</option>
                     </select>
+                    {
+                        submitted && products.category==="" && <span className='text-danger'>*Category name required</span>
+                    }
                 </div>
 
-                <button className='btn btn-primary float-end' onClick={(e)=>{e.preventDefault(); props.add(products)}}>send</button>
+                <button 
+                className='btn btn-primary float-end' 
+                onClick={(e)=>{
+                    setSubmitted(true)
+                    e.preventDefault(); 
+                    if(!!products.name && !!products.price && !!products.category){
+                        props.add(products)
+                    }
+                }}
+                >send</button>
                 <button className='btn btn-danger float-end' onClick={(e)=>{e.preventDefault(); props.close()}}>cancel</button>
             </form>
 

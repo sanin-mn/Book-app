@@ -12,6 +12,7 @@ export default function Table(props) {
             <th>Name</th>
             <th>Price</th>
             <th>Category</th>
+            <th>Edit / Delete</th>
         </tr>
     </thead>
     <tbody>
