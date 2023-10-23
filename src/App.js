@@ -1,23 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import Form from './components/Form';
+import Table from './components/Table';
+import {getData,deleteData} from './Api/Api'
+import { useEffect, useState } from 'react';
 
 function App() {
+
+  const [products,setProducts] = useState ([])
+
+  useEffect(
+    ()=>{
+      getProducts()
+    },[]
+  )
+
+  let getProducts = async () =>{
+    let res = await getData();
+    setProducts(res.data)
+  }
+
+  let deleteProduct = async (id) =>{
+    await deleteData(id);
+    getProducts()
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='wrapper m-5 w-50'>
+          <h1>crud</h1>
+          <button className='btn btn-primary'>add Product</button>
+          <Table products={products} deleteProduct={deleteProduct}></Table>
+          <Form/>
     </div>
   );
 }
