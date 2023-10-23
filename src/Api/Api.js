@@ -15,9 +15,18 @@ export async function deleteData(id){
     
 }
 
-export async function postData(id){
+export async function postData(data){
 
     return await axios.post(url,data,{
+        headers:{
+            'Content-Type':'application/json'
+        }
+    })
+    
+}
+export async function putData(id,data){
+
+    return await axios.put(url+'/'+id,data,{
         headers:{
             'Content-Type':'application/json'
         }

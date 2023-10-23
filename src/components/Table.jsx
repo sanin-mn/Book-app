@@ -1,9 +1,10 @@
 import React from 'react'
 
 export default function Table(props) {
+
   return (
     <div>
-<table className='table m-3'>
+<table className='table m-3 shadow border'>
 
     <thead>
         <tr>
@@ -24,8 +25,8 @@ export default function Table(props) {
                     <td>{data.price}</td>
                     <td>{data.category}</td>
                     <td>
-                        <button className='btn btn-primary m-1'>Edit</button>
-                        <button className='btn btn-danger m-1' onClick={()=>{props.deleteProduct(data.id)}}>Delete</button>
+                        <button className='btn btn-primary m-1' onClick={()=>{props.edit(data)}}>Edit</button>
+                        <button className='btn  m-1' onClick={()=>{props.delete(data.id)}}><i class="fa-solid fa-trash text-danger fs-3"></i></button>
                     </td>
                 </tr>
                 )
