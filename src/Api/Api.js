@@ -1,7 +1,8 @@
 import axios from "axios";
 
 
-const url = "http://localhost:4000/products"
+// const url = "http://localhost:4000/products"
+const url = "https://crud-server-w59n.onrender.com/products"
 
 export async function getData(){
 
